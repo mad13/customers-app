@@ -6,7 +6,7 @@ function AppFrame({ header, body }) {
     return (
         <div className="app-frame">
             <AppHeader title={header}></AppHeader>
-            <div>{body}</div>
+            <div>{body} </div>
             <div>Aplication Simple de Ejemplo</div>
         </div>
     )
