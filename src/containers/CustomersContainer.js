@@ -50,7 +50,7 @@ export class CustomersContainer extends Component {
         return (
             <div>
                 <AppFrame header={'Listado de clientes'}
-                    body={this.renderBody(customers)}
+                    body={this.renderBody(this.props.customers)}
                 ></AppFrame>
             </div>
         )
@@ -59,11 +59,16 @@ export class CustomersContainer extends Component {
 
 CustomersContainer.propTypes = {
     fetchCustomers: PropTypes.func.isRequired,
+    customers: PropTypes.array.isRequired,
 }
 
-const mapDispatchToProps = (dispatch) => (
-    {
-        fetchCustomers: () => dispatch(fetchCustomers())
-    }
-)
-export default withRouter(connect(null, mapDispatchToProps)(CustomersContainer))
+CustomersContainer.defaultProps = {
+    customers: []
+}
+
+
+const mapStateToProps = state => ({
+    customers: state.customers
+})
+
+export default withRouter(connect(mapStateToProps, { fetchCustomers })(CustomersContainer))
