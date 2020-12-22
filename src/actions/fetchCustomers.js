@@ -1,12 +1,9 @@
 import { FETCH_CUSTOMERS } from './../constants'
 import { createAction } from 'redux-actions'
+import { apiGet } from '../api'
+import { urlCustomers } from '../api/urls'
 
-
-const url = 'http://localhost:3001/customers'
-
-const apiFecthCustomers = () => fetch(url).then(v => v.json())
-
-export const fetchCustomers = createAction(FETCH_CUSTOMERS, apiFecthCustomers)
+export const fetchCustomers = createAction(FETCH_CUSTOMERS, apiGet(urlCustomers))
 
 /* --- con lo de arriba falla
 
