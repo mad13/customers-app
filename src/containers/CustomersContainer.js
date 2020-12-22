@@ -6,6 +6,7 @@ import AppFrame from '../components/AppFrame'
 import CustomersActions from '../components/CustomersActions'
 import CustomersList from '../components/CustomersList'
 import { fetchCustomers } from '../actions/fetchCustomers'
+import { getCustomers } from '../selectors/customers'
 
 const customers = [
     {
@@ -68,7 +69,7 @@ CustomersContainer.defaultProps = {
 
 
 const mapStateToProps = state => ({
-    customers: state.customers
+    customers: getCustomers(state)
 })
 
 export default withRouter(connect(mapStateToProps, { fetchCustomers })(CustomersContainer))

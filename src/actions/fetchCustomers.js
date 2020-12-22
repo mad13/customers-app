@@ -1,9 +1,18 @@
-import { FETCH_CUSTOMERS } from '../constants'
+import { FETCH_CUSTOMERS } from './../constants'
 import { createAction } from 'redux-actions'
+
+
+const url = 'http://localhost:3001/customers'
+
+const apiFecthCustomers = () => fetch(url).then(v => v.json())
+
+export const fetchCustomers = createAction(FETCH_CUSTOMERS, apiFecthCustomers)
+
+/* --- con lo de arriba falla
 
 const customers = [
     {
-        "dni": "27000000",
+        "dni": "27000001",
         "name": "Juan Perezzzz",
         "age": 37
     },
@@ -19,3 +28,4 @@ const customers = [
 ]
 
 export const fetchCustomers = createAction(FETCH_CUSTOMERS, () => customers)
+*/
